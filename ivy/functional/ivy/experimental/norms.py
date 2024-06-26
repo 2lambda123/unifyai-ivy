@@ -56,6 +56,7 @@ def l1_normalize(
     >>> print(y)
     ivy.array([[0.33333334, 1.33333337],
            [1.28571439, 2.28571439]])
+
     """
     return current_backend(x).l1_normalize(x, axis=axis, out=out)
 
@@ -98,6 +99,7 @@ def l2_normalize(
     >>> print(y)
     ivy.array([[0.44721359, 0.89442718],
            [0.60000002, 0.80000001]])
+
     """
     return current_backend(x).l2_normalize(x, axis=axis, out=out)
 
@@ -120,11 +122,11 @@ def local_response_norm(
     data_format: Optional[Literal["NHWC", "NCHW"]] = "NHWC",
     out: Optional[Tuple[ivy.Array, ivy.Array, ivy.Array]] = None,
 ) -> ivy.Array:
-    """Apply local response normalization across the channels of a 4D input
-    array. The 4-D array is treated as a 3-D array of 1-D vectors (along the
-    channel dimension), and each vector is normalized independently. Within a
-    given vector, each component is divided by the squared sum of the
-    neighbouring components.
+    """
+    Apply local response normalization across the channels of a 4D input array. The 4-D
+    array is treated as a 3-D array of 1-D vectors (along the channel dimension), and
+    each vector is normalized independently. Within a given vector, each component is
+    divided by the squared sum of the neighbouring components.
 
     Parameters
     ----------
@@ -256,6 +258,7 @@ def batch_norm(
     ret
          Tuple of arrays containing
           the normalized input, running_mean, and running_variance.
+
     """
     xdims = len(x.shape)
 
@@ -374,6 +377,7 @@ def instance_norm(
     ret
          Tuple of arrays containing
           the normalized input, running_mean, and running_variance.
+
     """
     xdims = len(x.shape)
     if data_format == "NCS":
@@ -453,8 +457,8 @@ def group_norm(
     data_format: Optional[str] = "NSC",
     out: Optional[ivy.Array] = None,
 ) -> ivy.Array:
-    """Apply group normalization to the input array and returns the normalized
-    input.
+    """
+    Apply group normalization to the input array and returns the normalized input.
 
     Parameters
     ----------
@@ -565,5 +569,6 @@ def lp_normalize(
     >>> print(y)
     ivy.array([[0.33333334, 0.66666669],
            [0.42857143, 0.5714286 ]])
+
     """
     return current_backend(x).lp_normalize(x, p=p, axis=axis, out=out)

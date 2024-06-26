@@ -1,5 +1,4 @@
-"""Collection of Jax random functions, wrapped to fit Ivy syntax and
-signature."""
+"""Collection of Jax random functions, wrapped to fit Ivy syntax and signature."""
 
 # global
 import jax
@@ -106,10 +105,12 @@ def multinomial(
 
     if probs is None:
         probs = (
-            jnp.ones((
-                batch_size,
-                population_size,
-            ))
+            jnp.ones(
+                (
+                    batch_size,
+                    population_size,
+                )
+            )
             / population_size
         )
     orig_probs_shape = list(probs.shape)
